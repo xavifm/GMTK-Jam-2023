@@ -17,6 +17,7 @@ public class MapSystem : MonoBehaviour
         squareMatrix[0][0] = SquareValue.ANIMAL;
     }
 
+
     void InitMatrix()
     {
         squareMatrix = new SquareValue[width][];
