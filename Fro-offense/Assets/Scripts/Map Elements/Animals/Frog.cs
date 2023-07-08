@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Frog : Element
 {
-    float moveTimer = 0;
-
     const float TIMER_BASE = 2;
 
     [SerializeField] bool dodging = false;
@@ -19,12 +17,11 @@ public class Frog : Element
     private void Update()
     {
         base.Update();
-        MoveStateMachine();
     }
 
-    void MoveStateMachine()
+    protected override void MoveStateMachine()
     {
-        moveTimer -= Time.deltaTime;
+        base.MoveStateMachine();
 
         if(moveTimer <= 0)
         {
@@ -34,6 +31,9 @@ public class Frog : Element
 
             switch (nextSquareValue)
             {
+                case MapSystem.SquareValue.OUTSIDE_MAP:
+                    GameManager.Instance.ChangeGameState(GameState.LOSE_GAME);
+                    break;
                 case MapSystem.SquareValue.EMPTY:
                     dodging = false;
                     moveSystem.destinationVector = new Vector3(moveSystem.destinationVector.x, moveSystem.destinationVector.y, moveSystem.destinationVector.z + 1);
@@ -86,4 +86,5 @@ public class Frog : Element
     {
         return map.GetSquareValue(x, y);
     }
+
 }

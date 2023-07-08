@@ -22,6 +22,8 @@ public class MainMenuManager : MonoBehaviour
         SceneManager.LoadScene("Credits");
     }
 
+
+
     public void ExitGame()
     {
         Application.Quit();
