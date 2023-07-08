@@ -6,8 +6,8 @@ public class MapSystem : MonoBehaviour
 {
     public enum SquareValue { EMPTY, ANIMAL, CAR, OBSTACLE, OUTSIDE_MAP }
 
-    [SerializeField] int width;
-    [SerializeField] int height;
+    public int width;
+    public int height;
 
     internal SquareValue[][] squareMatrix;
 
