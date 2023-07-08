@@ -5,7 +5,19 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
+  - enabled: 0
+    path: Assets/Packages/EmaceArt - raft on the desert/Scenes/Desert_demoscene.unity
     guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: e5848f924ab2bda449e3eb24683c1f25
+  - enabled: 1
+    path: Assets/Scenes/GameScene.unity
+    guid: 66ce452c014997944b4423793614aeff
+  - enabled: 1
+    path: Assets/Scenes/Options.unity
+    guid: 27edb5f0b8e1dde49b01edb0c3a149b2
+  - enabled: 1
+    path: Assets/Scenes/Credits.unity
+    guid: b0d1c3b0ce7c74c4c9d0d4fbff3613fb
   m_configObjects: {}
