@@ -5,11 +5,16 @@ using UnityEngine;
 public class ElementMoveSystem : MonoBehaviour
 {
     public Vector3 destinationVector;
+    public bool enableYMovement;
     [SerializeField] float elementSpeed = 5;
 
     private void Update()
     {
-        destinationVector = new Vector3(Mathf.Round(destinationVector.x), transform.position.y, Mathf.Round(destinationVector.z));
+        if(!enableYMovement)
+            destinationVector = new Vector3(Mathf.Round(destinationVector.x), transform.position.y, Mathf.Round(destinationVector.z));
+        else
+            destinationVector = new Vector3(Mathf.Round(destinationVector.x), Mathf.Round(destinationVector.y), Mathf.Round(destinationVector.z));
+
         transform.position = Vector3.Lerp(transform.position, destinationVector, Time.deltaTime * elementSpeed);
     }
 }
