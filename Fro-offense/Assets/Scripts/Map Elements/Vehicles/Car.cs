@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Car : Element
 {
-    float moveTimer = 0;
     int carxDIR = 1;
 
     const float TIMER_BASE = 2;
@@ -17,17 +16,17 @@ public class Car : Element
     private void Update()
     {
         base.Update();
-        MoveStateMachine();
     }
 
-    void MoveStateMachine()
+    protected override void MoveStateMachine()
     {
-        moveTimer -= Time.deltaTime;
+        base.MoveStateMachine();
 
         if (moveTimer <= 0)
         {
             moveTimer = TIMER_BASE;
             MapSystem.SquareValue nextSquareValue = GetNextSquare((int)moveSystem.destinationVector.x + carxDIR, (int)moveSystem.destinationVector.z);
+            transform.rotation = Quaternion.Euler(0, 90 * carxDIR, 0);
             Debug.Log(nextSquareValue.ToString());
 
             switch (nextSquareValue)

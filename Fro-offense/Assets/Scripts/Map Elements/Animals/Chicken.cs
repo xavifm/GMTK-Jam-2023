@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Chicken : Element
 {
-    float moveTimer = 0;
-
     const float TIMER_BASE = 2;
 
     [SerializeField] bool dodging = false;
@@ -16,26 +14,30 @@ public class Chicken : Element
     private void Start()
     {
         base.Start();
+        moveSystem.destinationVector = new Vector3(moveSystem.destinationVector.x, originalYPos, moveSystem.destinationVector.z);
     }
 
     private void Update()
     {
         base.Update();
-        MoveStateMachine();
     }
 
-    void MoveStateMachine()
+    protected override void MoveStateMachine()
     {
-        moveTimer -= Time.deltaTime;
+        base.MoveStateMachine();
 
         if (moveTimer <= 0)
         {
             moveTimer = TIMER_BASE;
             MapSystem.SquareValue nextSquareValue = GetNextSquare((int)moveSystem.destinationVector.x, (int)moveSystem.destinationVector.z + 1);
+            transform.rotation = Quaternion.Euler(0, 0, 0);
             Debug.Log(nextSquareValue.ToString());
 
             switch (nextSquareValue)
             {
+                case MapSystem.SquareValue.OUTSIDE_MAP:
+                    GameManager.Instance.ChangeGameState(GameState.LOSE_GAME);
+                    break;
                 case MapSystem.SquareValue.EMPTY:
                     dodging = false;
                     moveSystem.destinationVector = new Vector3(moveSystem.destinationVector.x, originalYPos, moveSystem.destinationVector.z + 1);

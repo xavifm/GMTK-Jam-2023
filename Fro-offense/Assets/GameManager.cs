@@ -75,7 +75,7 @@ public class GameManager : MonoBehaviour
     public void KillRemainingAnimal()
     {
         remaingingAnimals--;
-        remainingAnimalsText.text = remaingingAnimals.ToString();
+        remainingAnimalsText.text = "Animals Left: " + remaingingAnimals.ToString();
         if (remaingingAnimals <= 0) ChangeGameState(GameState.WIN_GAME);
     }
 

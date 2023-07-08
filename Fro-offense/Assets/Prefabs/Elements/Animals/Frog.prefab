@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 3661548956704000633}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.9, y: 0.9, z: 0.9}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4143339454083485332}
@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 8973687030066433397}
   - component: {fileID: 4176669796402717245}
   - component: {fileID: 1753585666661697817}
+  - component: {fileID: 7881570949589366373}
   m_Layer: 0
   m_Name: Frog
   m_TagString: Untagged
@@ -131,6 +132,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destinationVector: {x: 0, y: 0, z: 0}
+  enableYMovement: 0
   elementSpeed: 5
 --- !u!114 &1753585666661697817
 MonoBehaviour:
@@ -145,6 +147,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   elementType: 1
+  dodging: 0
+--- !u!65 &7881570949589366373
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4782701611913455316}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1939430579399625164
 PrefabInstance:
   m_ObjectHideFlags: 0

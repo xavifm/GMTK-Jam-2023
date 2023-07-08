@@ -11,12 +11,14 @@ public class Element : MonoBehaviour
 
     internal ElementMoveSystem moveSystem;
     protected float moveTimer = 0;
+    bool canMove = false;
 
     protected new void Start()
     {
         originalYPos = transform.position.y;
         moveSystem = GetComponent<ElementMoveSystem>();
         map = GameObject.FindGameObjectWithTag("Map").GetComponent<MapSystem>();
+
         if (elementType == MapSystem.SquareValue.ANIMAL) GameManager.Instance.AddRemainingAnimal();
     }
 
@@ -25,7 +27,9 @@ public class Element : MonoBehaviour
         ResetMapSquareValue();
         elementPos = new Vector2(Mathf.Round(transform.position.x), Mathf.Round(transform.position.z));
         SetMapSquareValue();
-        if(GameManager.Instance.GameStateEquals(GameState.PLAY)) MoveStateMachine();
+
+        CheckCanMove();
+        if (canMove) MoveStateMachine();
     }
 
     protected void SetMapSquareValue()
@@ -51,4 +55,33 @@ public class Element : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    void CheckCanMove()
+    {
+        if (GameManager.Instance.GameStateEquals(GameState.PLAY) && !canMove)
+        {
+            canMove = true;
+            Collider col = GetComponent<Collider>();
+            if(col != null) col.enabled = true;
+        }
+        else if (!GameManager.Instance.GameStateEquals(GameState.PLAY) && canMove)
+        {
+            canMove = false;
+            Collider col = GetComponent<Collider>();
+            if (col != null) col.enabled = false;
+        }
+    }
+
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(elementType == MapSystem.SquareValue.CAR)
+        {
+            Element otherElement = other.GetComponent<Element>();
+            if (otherElement != null && otherElement.elementType == MapSystem.SquareValue.ANIMAL)
+                otherElement.KillAnimal();
+        }
+    }
+
+
 }

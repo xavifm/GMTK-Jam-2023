@@ -2,10 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Truck : Element
+public class Bike : Element
 {
-    float moveTimer = 0;
-
     const float TIMER_BASE = 2;
     int carxDIR = 1;
 
@@ -19,17 +17,17 @@ public class Truck : Element
     private void Update()
     {
         base.Update();
-        MoveStateMachine();
     }
 
-    void MoveStateMachine()
+    protected override void MoveStateMachine()
     {
-        moveTimer -= Time.deltaTime;
+        base.MoveStateMachine();
 
         if (moveTimer <= 0)
         {
             moveTimer = TIMER_BASE;
             MapSystem.SquareValue nextSquareValue = GetNextSquare((int)moveSystem.destinationVector.x + carxDIR, (int)moveSystem.destinationVector.z);
+            transform.rotation = Quaternion.Euler(0, 90 * carxDIR, 0);
             Debug.Log(nextSquareValue.ToString());
 
             switch (nextSquareValue)

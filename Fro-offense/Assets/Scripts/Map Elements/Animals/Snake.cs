@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Snake : Element
 {
-    float moveTimer = 0;
-
     const float TIMER_BASE = 2;
 
     [SerializeField] bool dodging = false;
@@ -24,7 +22,6 @@ public class Snake : Element
     private void Update()
     {
         base.Update();
-        MoveStateMachine();
     }
 
     void RandomizeSnakeFirstMove()
@@ -35,9 +32,9 @@ public class Snake : Element
             SnakeStateMachine();
     }
 
-    void MoveStateMachine()
+    protected override void MoveStateMachine()
     {
-        moveTimer -= Time.deltaTime;
+        base.MoveStateMachine();
 
         if (moveTimer <= 0)
         {
@@ -47,10 +44,12 @@ public class Snake : Element
             if(!horizontalMovement)
             {
                 VerticalMovementStateMachine();
+                transform.rotation = Quaternion.Euler(0, 0, 0);
             }
             else
             {
                 HorizontalMovementStateMachine();
+                transform.rotation = Quaternion.Euler(0, 90 * -snakeXDIR, 0);
             }
 
             if (dodging)
@@ -60,9 +59,14 @@ public class Snake : Element
                     && !map.GetSquareValue((int)(moveSystem.destinationVector.x + dodgeDir), (int)moveSystem.destinationVector.z).Equals(MapSystem.SquareValue.HOLE)
                     && !map.GetSquareValue((int)(moveSystem.destinationVector.x + dodgeDir), (int)moveSystem.destinationVector.z).Equals(MapSystem.SquareValue.ANIMAL)
                     )
+                {
                     moveSystem.destinationVector = new Vector3(moveSystem.destinationVector.x + dodgeDir, moveSystem.destinationVector.y, moveSystem.destinationVector.z);
+                    transform.rotation = Quaternion.Euler(0, 90 * dodgeDir, 0);
+                }
                 else
+                {
                     DodgeStateMachine();
+                }
             }
         }
     }
@@ -73,6 +77,9 @@ public class Snake : Element
 
         switch (nextSquareValue)
         {
+            case MapSystem.SquareValue.OUTSIDE_MAP:
+                GameManager.Instance.ChangeGameState(GameState.LOSE_GAME);
+                break;
             case MapSystem.SquareValue.EMPTY:
                 dodging = false;
                 moveSystem.destinationVector = new Vector3(moveSystem.destinationVector.x, moveSystem.destinationVector.y, moveSystem.destinationVector.z + 1);
@@ -112,6 +119,7 @@ public class Snake : Element
                 EnableDodgeMode();
                 break;
         }
+        SnakeStateMachine();
     }
 
     void EnableDodgeMode()
@@ -120,7 +128,6 @@ public class Snake : Element
         {
             dodging = true;
             DodgeStateMachine();
-            SnakeStateMachine();
         }
     }
 

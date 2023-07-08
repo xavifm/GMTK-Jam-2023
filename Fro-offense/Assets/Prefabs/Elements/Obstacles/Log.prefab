@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 200286157824176729}
   - component: {fileID: 2332047588391462423}
   - component: {fileID: 4785772397007218123}
+  - component: {fileID: 5753922161237254014}
   m_Layer: 0
   m_Name: Log
   m_TagString: Untagged
@@ -98,6 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destinationVector: {x: 0, y: 0, z: 0}
+  enableYMovement: 0
   elementSpeed: 5
 --- !u!114 &4785772397007218123
 MonoBehaviour:
@@ -112,3 +114,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   elementType: 3
+--- !u!65 &5753922161237254014
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 200286157824176730}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
