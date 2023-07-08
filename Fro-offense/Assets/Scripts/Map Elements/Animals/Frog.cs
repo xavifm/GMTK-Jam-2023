@@ -41,6 +41,9 @@ public class Frog : Element
                 case MapSystem.SquareValue.OBSTACLE:
                     EnableDodgeMode();
                     break;
+                case MapSystem.SquareValue.HOLE:
+                    EnableDodgeMode();
+                    break;
                 case MapSystem.SquareValue.ANIMAL:
                     EnableDodgeMode();
                     break;
@@ -50,6 +53,7 @@ public class Frog : Element
             {
                 if(!map.GetSquareValue((int) (moveSystem.destinationVector.x + dodgeDir), (int) moveSystem.destinationVector.z).Equals(MapSystem.SquareValue.OUTSIDE_MAP) 
                     && !map.GetSquareValue((int)(moveSystem.destinationVector.x + dodgeDir), (int)moveSystem.destinationVector.z).Equals(MapSystem.SquareValue.OBSTACLE)
+                    && !map.GetSquareValue((int)(moveSystem.destinationVector.x + dodgeDir), (int)moveSystem.destinationVector.z).Equals(MapSystem.SquareValue.HOLE)
                     && !map.GetSquareValue((int)(moveSystem.destinationVector.x + dodgeDir), (int)moveSystem.destinationVector.z).Equals(MapSystem.SquareValue.ANIMAL)
                     )
                     moveSystem.destinationVector = new Vector3(moveSystem.destinationVector.x + dodgeDir, moveSystem.destinationVector.y, moveSystem.destinationVector.z);
