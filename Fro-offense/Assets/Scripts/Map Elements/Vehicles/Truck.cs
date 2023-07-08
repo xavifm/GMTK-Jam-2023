@@ -9,9 +9,6 @@ public class Truck : Element
     const float TIMER_BASE = 2;
     int carxDIR = 1;
 
-    [SerializeField] bool dodging = false;
-    int dodgeDir = 0;
-
     const float POSY_THRESHOLD = 1;
 
     private void Start()
@@ -38,7 +35,6 @@ public class Truck : Element
             switch (nextSquareValue)
             {
                 case MapSystem.SquareValue.EMPTY:
-                    dodging = false;
                     moveSystem.destinationVector = new Vector3(moveSystem.destinationVector.x + carxDIR, originalYPos, moveSystem.destinationVector.z);
                     break;
                 case MapSystem.SquareValue.HOLE:
@@ -48,6 +44,9 @@ public class Truck : Element
                     SwitchCarDir();
                     break;
                 case MapSystem.SquareValue.ANIMAL:
+                    SwitchCarDir();
+                    break;
+                case MapSystem.SquareValue.OUTSIDE_MAP:
                     SwitchCarDir();
                     break;
             }
