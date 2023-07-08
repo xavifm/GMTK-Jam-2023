@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Element : MonoBehaviour
 {
+    [SerializeField] protected Transform model;
+
     Vector2 elementPos;
     public MapSystem.SquareValue elementType;
     protected MapSystem map;
@@ -83,5 +85,22 @@ public class Element : MonoBehaviour
         }
     }
 
+
+    protected void RotateTo(Quaternion _targetRot, float _rotTime = 0.2f)
+    {
+        StartCoroutine(RotateTo_Cor(_targetRot, _rotTime));
+    }
+    private IEnumerator RotateTo_Cor(Quaternion _targetRot, float _lerpTime = 0.2f)
+    {
+        Quaternion initRot = model.rotation;
+        float timer = 0;
+
+        while (timer < _lerpTime)
+        {
+            yield return null;
+            timer += Time.deltaTime;
+            model.rotation = Quaternion.Lerp(initRot, _targetRot, timer / _lerpTime);
+        }
+    }
 
 }

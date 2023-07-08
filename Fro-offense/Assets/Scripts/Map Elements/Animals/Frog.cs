@@ -27,7 +27,7 @@ public class Frog : Element
         {
             moveTimer = TIMER_BASE;
             MapSystem.SquareValue nextSquareValue = GetNextSquare((int)moveSystem.destinationVector.x, (int)moveSystem.destinationVector.z + 1);
-            transform.rotation = Quaternion.Euler(0, 0, 0);
+            RotateTo(Quaternion.Euler(0, 0, 0));
             Debug.Log(nextSquareValue.ToString());
 
             switch (nextSquareValue)
@@ -59,7 +59,7 @@ public class Frog : Element
                     )
                 {
                     moveSystem.destinationVector = new Vector3(moveSystem.destinationVector.x + dodgeDir, moveSystem.destinationVector.y, moveSystem.destinationVector.z);
-                    transform.rotation = Quaternion.Euler(0, 90 * dodgeDir, 0);
+                    RotateTo(Quaternion.Euler(0, 90 * dodgeDir, 0));
                 }
             }
             else

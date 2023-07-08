@@ -15,6 +15,7 @@ public class SportCar : Element
     private void Start()
     {
         base.Start();
+        model.rotation = Quaternion.Euler(0, 90, 0);
     }
 
     private void Update()
@@ -34,12 +35,12 @@ public class SportCar : Element
             if(turns <= MAX_HORIZONTAL_TURNS)
             {
                 HorizontalMovement();
-                transform.rotation = Quaternion.Euler(0, 90 * carxDIR, 0);
+                RotateTo(Quaternion.Euler(0, 90 * carxDIR, 0));
             }
             else
             {
                 VerticalMovement();
-                transform.rotation = Quaternion.Euler(0, 90 * carVerticalDir, 0);
+                RotateTo(Quaternion.Euler(0, carVerticalDir > 0 ? 0 : 180, 0));
                 turns = 0;
             }
         }

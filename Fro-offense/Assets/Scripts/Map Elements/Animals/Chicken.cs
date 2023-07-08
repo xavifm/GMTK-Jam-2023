@@ -30,7 +30,7 @@ public class Chicken : Element
         {
             moveTimer = TIMER_BASE;
             MapSystem.SquareValue nextSquareValue = GetNextSquare((int)moveSystem.destinationVector.x, (int)moveSystem.destinationVector.z + 1);
-            transform.rotation = Quaternion.Euler(0, 0, 0);
+            RotateTo(Quaternion.Euler(0, 0, 0));
             Debug.Log(nextSquareValue.ToString());
 
             switch (nextSquareValue)

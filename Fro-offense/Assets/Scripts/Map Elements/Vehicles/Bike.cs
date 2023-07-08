@@ -12,6 +12,7 @@ public class Bike : Element
     private void Start()
     {
         base.Start();
+        model.rotation = Quaternion.Euler(0, 90, 0);
     }
 
     private void Update()
@@ -27,7 +28,7 @@ public class Bike : Element
         {
             moveTimer = TIMER_BASE;
             MapSystem.SquareValue nextSquareValue = GetNextSquare((int)moveSystem.destinationVector.x + carxDIR, (int)moveSystem.destinationVector.z);
-            transform.rotation = Quaternion.Euler(0, 90 * carxDIR, 0);
+            RotateTo(Quaternion.Euler(0, 90 * carxDIR, 0));
             Debug.Log(nextSquareValue.ToString());
 
             switch (nextSquareValue)

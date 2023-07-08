@@ -146,6 +146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99d1aed13a1494c408bc016ce10edbff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  model: {fileID: 4143339454083485332}
   elementType: 1
   dodging: 0
 --- !u!65 &7881570949589366373

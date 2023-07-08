@@ -44,12 +44,12 @@ public class Snake : Element
             if(!horizontalMovement)
             {
                 VerticalMovementStateMachine();
-                transform.rotation = Quaternion.Euler(0, 0, 0);
+                RotateTo(Quaternion.Euler(0, 0, 0));
             }
             else
             {
                 HorizontalMovementStateMachine();
-                transform.rotation = Quaternion.Euler(0, 90 * -snakeXDIR, 0);
+                RotateTo(Quaternion.Euler(0, 90 * -snakeXDIR, 0));
             }
 
             if (dodging)
@@ -61,7 +61,7 @@ public class Snake : Element
                     )
                 {
                     moveSystem.destinationVector = new Vector3(moveSystem.destinationVector.x + dodgeDir, moveSystem.destinationVector.y, moveSystem.destinationVector.z);
-                    transform.rotation = Quaternion.Euler(0, 90 * dodgeDir, 0);
+                    RotateTo(Quaternion.Euler(0, 90 * dodgeDir, 0));
                 }
                 else
                 {
