@@ -98,6 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destinationVector: {x: 0, y: 0, z: 0}
+  enableYMovement: 1
   elementSpeed: 5
 --- !u!114 &4045967028352606951
 MonoBehaviour:
@@ -112,3 +113,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   elementType: 2
+  dodging: 0
