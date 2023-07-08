@@ -43,7 +43,12 @@ public class MouseSystem : MonoBehaviour
     {
         MapSystem.SquareValue tileValue = map.GetSquareValue((int)worldPosition.x, (int)worldPosition.z);
 
-        if (tileValue.Equals(MapSystem.SquareValue.ANIMAL) || tileValue.Equals(MapSystem.SquareValue.OBSTACLE) || tileValue.Equals(MapSystem.SquareValue.OUTSIDE_MAP))
+        if (tileValue.Equals(MapSystem.SquareValue.ANIMAL) || 
+            tileValue.Equals(MapSystem.SquareValue.OBSTACLE) || 
+            tileValue.Equals(MapSystem.SquareValue.OUTSIDE_MAP) || 
+            tileValue.Equals(MapSystem.SquareValue.CAR) || 
+            tileValue.Equals(MapSystem.SquareValue.HOLE)
+            )
             colorMat.color = Color.red;
         else
             colorMat.color = Color.green;

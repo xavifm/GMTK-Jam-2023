@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2367754469834951029}
   - component: {fileID: 2367754469834951034}
   - component: {fileID: 1924461616304642285}
-  - component: {fileID: 2049569192596255259}
+  - component: {fileID: 8048248138605702941}
   m_Layer: 0
   m_Name: Car
   m_TagString: Untagged
@@ -98,8 +98,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destinationVector: {x: 0, y: 0, z: 0}
+  enableYMovement: 0
   elementSpeed: 5
---- !u!114 &2049569192596255259
+--- !u!114 &8048248138605702941
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -108,7 +109,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2367754469834951035}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 118775498a0f77140a1d03dbebd0ceb8, type: 3}
+  m_Script: {fileID: 11500000, guid: c25e1e036bc747e42a364b0099e26815, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   elementType: 2

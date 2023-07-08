@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MapSystem : MonoBehaviour
 {
-    public enum SquareValue { EMPTY, ANIMAL, CAR, OBSTACLE, OUTSIDE_MAP }
+    public enum SquareValue { EMPTY, ANIMAL, CAR, OBSTACLE, HOLE, OUTSIDE_MAP }
 
     public int width;
     public int height;

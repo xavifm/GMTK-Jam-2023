@@ -7,12 +7,14 @@ public class Element : MonoBehaviour
     Vector2 elementPos;
     public MapSystem.SquareValue elementType;
     protected MapSystem map;
+    protected float originalYPos;
 
     internal ElementMoveSystem moveSystem;
     protected float moveTimer = 0;
 
     protected new void Start()
     {
+        originalYPos = transform.position.y;
         moveSystem = GetComponent<ElementMoveSystem>();
         map = GameObject.FindGameObjectWithTag("Map").GetComponent<MapSystem>();
         if (elementType == MapSystem.SquareValue.ANIMAL) GameManager.Instance.AddRemainingAnimal();
