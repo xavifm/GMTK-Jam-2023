@@ -75,7 +75,8 @@ public class GameManager : MonoBehaviour
     public void KillRemainingAnimal()
     {
         remaingingAnimals--;
-        remainingAnimalsText.text = remaingingAnimals.ToString();
+        remainingAnimalsText.text = "Animals Left: " + remaingingAnimals.ToString();
+        AudioManager.Instance.Play_SFX("CarCrash_SFX");
         if (remaingingAnimals <= 0) ChangeGameState(GameState.WIN_GAME);
     }
 

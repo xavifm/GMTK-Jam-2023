@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class SportCar : Element
 {
-    float moveTimer = 0;
     int turns = 0;
     int carxDIR = 1;
 
@@ -16,17 +15,17 @@ public class SportCar : Element
     private void Start()
     {
         base.Start();
+        model.rotation = Quaternion.Euler(0, 90, 0);
     }
 
     private void Update()
     {
         base.Update();
-        MoveStateMachine();
     }
 
-    void MoveStateMachine()
+    protected override void MoveStateMachine()
     {
-        moveTimer -= Time.deltaTime;
+        base.MoveStateMachine();
 
         if (moveTimer <= 0)
         {
@@ -36,10 +35,12 @@ public class SportCar : Element
             if(turns <= MAX_HORIZONTAL_TURNS)
             {
                 HorizontalMovement();
+                RotateTo(Quaternion.Euler(0, 90 * carxDIR, 0));
             }
             else
             {
                 VerticalMovement();
+                RotateTo(Quaternion.Euler(0, carVerticalDir > 0 ? 0 : 180, 0));
                 turns = 0;
             }
         }

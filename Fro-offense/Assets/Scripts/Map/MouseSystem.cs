@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class MouseSystem : MonoBehaviour
 {
+    const int ANIMALS_MARGIN = 2;
+
     Plane plane = new Plane(Vector3.up, RAYCAST_POSY);
     Vector3 worldPosition = Vector3.zero;
     Camera cameraMain;
@@ -43,15 +45,8 @@ public class MouseSystem : MonoBehaviour
     {
         MapSystem.SquareValue tileValue = map.GetSquareValue((int)worldPosition.x, (int)worldPosition.z);
 
-        if (tileValue.Equals(MapSystem.SquareValue.ANIMAL) || 
-            tileValue.Equals(MapSystem.SquareValue.OBSTACLE) || 
-            tileValue.Equals(MapSystem.SquareValue.OUTSIDE_MAP) || 
-            tileValue.Equals(MapSystem.SquareValue.CAR) || 
-            tileValue.Equals(MapSystem.SquareValue.HOLE)
-            )
-            colorMat.color = Color.red;
-        else
-            colorMat.color = Color.green;
+        if (CanPlaceCar(tileValue)) colorMat.color = Color.green;
+        else colorMat.color = Color.red;
 
         Color newColor = colorMat.color;
         newColor.a = COLOR_MARK_ALPHA;
@@ -59,5 +54,16 @@ public class MouseSystem : MonoBehaviour
         colorMat.color = newColor;
 
         Debug.Log(map.GetSquareValue((int) worldPosition.x, (int) worldPosition.z).ToString());
+    }
+
+    bool CanPlaceCar(MapSystem.SquareValue _tileValue)
+    {
+        return ((int)worldPosition.x == 0 || (int)worldPosition.x == map.width - 1) && 
+            (int)worldPosition.z > ANIMALS_MARGIN && (int)worldPosition.z < map.height - ANIMALS_MARGIN - 1 &&
+            !_tileValue.Equals(MapSystem.SquareValue.ANIMAL) &&
+            !_tileValue.Equals(MapSystem.SquareValue.OBSTACLE) &&
+            !_tileValue.Equals(MapSystem.SquareValue.OUTSIDE_MAP) &&
+            !_tileValue.Equals(MapSystem.SquareValue.CAR) &&
+            !_tileValue.Equals(MapSystem.SquareValue.HOLE);
     }
 }
