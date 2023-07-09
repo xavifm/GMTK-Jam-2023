@@ -76,6 +76,9 @@ public class Element : MonoBehaviour
         if(elementType == MapSystem.SquareValue.ANIMAL)
         {
             GameManager.Instance.KillRemainingAnimal();
+            if(name.ToLower().Contains("frog")) AudioManager.Instance.Play_SFX("Frog_SFX");
+            else if(name.ToLower().Contains("snake")) AudioManager.Instance.Play_SFX("Snake_SFX");
+            else if(name.ToLower().Contains("chicken")) AudioManager.Instance.Play_SFX("Chicken_SFX");
             Destroy(gameObject);
         }
     }

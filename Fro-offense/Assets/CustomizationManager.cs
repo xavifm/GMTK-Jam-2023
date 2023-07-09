@@ -88,6 +88,7 @@ public class CustomizationManager : MonoBehaviour
                 squareData.elementRef.ResetMapSquareValue();
                 SetSelectedElement(squareData.elementRef.elementUIId);
                 Destroy(squareData.elementRef.gameObject);
+                AudioManager.Instance.Play_SFX("UIClick_SFX");
             }
         }
 
@@ -109,7 +110,7 @@ public class CustomizationManager : MonoBehaviour
     {
         currSelectedElementMS.enableYMovement = currSelectedElementOriginalYEnabled;
         currSelectedElement.elementType = MapSystem.SquareValue.CAR;
-        map.SetSquareValue((int)mouseSystem.GetMousePos().x, (int)mouseSystem.GetMousePos().z, new SquareData(currSelectedElement.elementType, currSelectedElement));
+        map.SetSquareValue((int)mouseSystem.GetMousePos().x, (int)mouseSystem.GetMousePos().y, new SquareData(currSelectedElement.elementType, currSelectedElement));
         currSelectedElement.SetInitDir(mouseSystem.GetPlaceInitDir());
         currSelectedElement = null;
         currSelectedElementMS = null;
