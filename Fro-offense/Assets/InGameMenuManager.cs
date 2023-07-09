@@ -5,6 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class InGameMenuManager : MonoBehaviour
 {
+    [SerializeField] Transform vehiclesContainer;
+    [SerializeField] GameObject vehicleUIPrefab;
+
+    private void Start()
+    {
+        InitVehiclesUI();
+    }
+
 
     public void NextStage()
     {
@@ -19,6 +27,16 @@ public class InGameMenuManager : MonoBehaviour
     public void Retry()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+
+    public void InitVehiclesUI()
+    {
+        for(int i = 0; i < CustomizationManager.Instance.customVehiclesData.Count; i++)
+        {
+            VehicleUI_Data newVehicleUI = Instantiate(vehicleUIPrefab, vehiclesContainer).GetComponent<VehicleUI_Data>();
+            newVehicleUI.InitUI(CustomizationManager.Instance.customVehiclesData[i], i);
+        }
     }
 
 }

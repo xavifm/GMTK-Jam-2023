@@ -64,6 +64,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   model: {fileID: 8008531704531358828}
+  elementUIId: 0
   elementType: 2
 --- !u!65 &4828053572828797947
 BoxCollider:
@@ -74,9 +75,9 @@ BoxCollider:
   m_GameObject: {fileID: 2367754469834951035}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 0.6, y: 0.6, z: 0.6}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &3002213707037596279
 Rigidbody:

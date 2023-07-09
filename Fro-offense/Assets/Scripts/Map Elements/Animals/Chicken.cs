@@ -55,9 +55,9 @@ public class Chicken : Element
 
             if (dodging)
             {
-                if (!map.GetSquareValue((int)(moveSystem.destinationVector.x + dodgeDir), (int)moveSystem.destinationVector.z).Equals(MapSystem.SquareValue.OUTSIDE_MAP)
-                    && !map.GetSquareValue((int)(moveSystem.destinationVector.x + dodgeDir), (int)moveSystem.destinationVector.z).Equals(MapSystem.SquareValue.OBSTACLE)
-                    && !map.GetSquareValue((int)(moveSystem.destinationVector.x + dodgeDir), (int)moveSystem.destinationVector.z).Equals(MapSystem.SquareValue.ANIMAL)
+                if (!map.GetSquareData((int)(moveSystem.destinationVector.x + dodgeDir), (int)moveSystem.destinationVector.z).Equals(MapSystem.SquareValue.OUTSIDE_MAP)
+                    && !map.GetSquareData((int)(moveSystem.destinationVector.x + dodgeDir), (int)moveSystem.destinationVector.z).Equals(MapSystem.SquareValue.OBSTACLE)
+                    && !map.GetSquareData((int)(moveSystem.destinationVector.x + dodgeDir), (int)moveSystem.destinationVector.z).Equals(MapSystem.SquareValue.ANIMAL)
                     )
                     moveSystem.destinationVector = new Vector3(moveSystem.destinationVector.x + dodgeDir, moveSystem.destinationVector.y, moveSystem.destinationVector.z);
                 else
@@ -87,6 +87,6 @@ public class Chicken : Element
 
     MapSystem.SquareValue GetNextSquare(int x, int y)
     {
-        return map.GetSquareValue(x, y);
+        return map.GetSquareData(x, y).value;
     }
 }
