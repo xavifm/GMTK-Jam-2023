@@ -66,6 +66,7 @@ MonoBehaviour:
   model: {fileID: 8008531704531358828}
   elementUIId: 0
   elementType: 2
+  state: 0
 --- !u!65 &4828053572828797947
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -77,8 +78,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.6, y: 0.6, z: 0.6}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 2, y: 1, z: 1}
+  m_Center: {x: 0.4, y: -0.69, z: 0.16}
 --- !u!54 &3002213707037596279
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -130,7 +131,7 @@ PrefabInstance:
     - target: {fileID: 1439859185399269176, guid: 072cb62f576b68a4f8b8b9f903f05cde,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.623
+      value: -1.126
       objectReference: {fileID: 0}
     - target: {fileID: 1439859185399269176, guid: 072cb62f576b68a4f8b8b9f903f05cde,
         type: 3}
