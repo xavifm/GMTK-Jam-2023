@@ -57,14 +57,14 @@ public class CustomizationManager : MonoBehaviour
         if (HasSelectedElement())
         {
             currSelectedElementMS.destinationVector = mouseSystem.GetSelectedCarPos();
-
-            //Debug.Log("can place element: " + canPlaceElement);
-            //Debug.Log("CanPlaceCar: " + mouseSystem.CanPlaceCar(currSelectedElement.elementType));
-            //Debug.Log("SquareData value: " + squareData.value);
-            //Debug.Log("Mouse Click: " + Input.GetKeyDown(KeyCode.Mouse0));
-
+            //Debug.Log("CanPlaceElement: " + mouseSystem.CanPlaceCar(currSelectedElement.elementType));
+            //Debug.Log("SquareValue: " + squareData.value.ToString());
+            //Debug.Log("MouseDown: " + Input.GetKeyDown(KeyCode.Mouse0));
+            Debug.Log("Has element ref: " + squareData.elementRef != null);
+            if (squareData.elementRef != null) Debug.Log("Element ref: " + squareData.elementRef.elementType.ToString());
             if (Input.GetKeyDown(KeyCode.Mouse0) && canPlaceElement && mouseSystem.CanPlaceCar(currSelectedElement.elementType)
-                && (squareData.value == MapSystem.SquareValue.EMPTY))
+                && (squareData.value == MapSystem.SquareValue.EMPTY || squareData.value == MapSystem.SquareValue.CAR)
+                && !currSelectedElement.collidingWithCar)
             {
                 //Element prevElementRef = squareData.elementRef;
                 PlaceSelectedElement();
@@ -85,6 +85,7 @@ public class CustomizationManager : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Mouse0) && squareData.elementRef != null && squareData.value == MapSystem.SquareValue.CAR)
             {
+                squareData.elementRef.ResetMapSquareValue();
                 SetSelectedElement(squareData.elementRef.elementUIId);
                 Destroy(squareData.elementRef.gameObject);
             }
