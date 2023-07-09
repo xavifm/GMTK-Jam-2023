@@ -45,6 +45,43 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c60a38503c49b04ba7be068ad61d944, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  availablePlaces:
+  - pos: {x: 0, y: 3}
+    initDir: {x: 1, y: 0}
+  - pos: {x: 0, y: 4}
+    initDir: {x: 1, y: 0}
+  - pos: {x: 0, y: 5}
+    initDir: {x: 1, y: 0}
+  - pos: {x: 0, y: 6}
+    initDir: {x: 1, y: 0}
+  - pos: {x: 0, y: 7}
+    initDir: {x: 1, y: 0}
+  - pos: {x: 0, y: 8}
+    initDir: {x: 1, y: 0}
+  - pos: {x: 0, y: 9}
+    initDir: {x: 1, y: 0}
+  - pos: {x: 0, y: 10}
+    initDir: {x: 1, y: 0}
+  - pos: {x: 0, y: 11}
+    initDir: {x: 1, y: 0}
+  - pos: {x: 12, y: 3}
+    initDir: {x: -1, y: 0}
+  - pos: {x: 12, y: 4}
+    initDir: {x: -1, y: 0}
+  - pos: {x: 12, y: 5}
+    initDir: {x: -1, y: 0}
+  - pos: {x: 12, y: 6}
+    initDir: {x: -1, y: 0}
+  - pos: {x: 12, y: 7}
+    initDir: {x: -1, y: 0}
+  - pos: {x: 12, y: 8}
+    initDir: {x: -1, y: 0}
+  - pos: {x: 12, y: 9}
+    initDir: {x: -1, y: 0}
+  - pos: {x: 12, y: 10}
+    initDir: {x: -1, y: 0}
+  - pos: {x: 12, y: 11}
+    initDir: {x: -1, y: 0}
   colorMat: {fileID: 2100000, guid: 2a898439fae01724f94649fa5433bab9, type: 2}
 --- !u!1 &7675878876610103179
 GameObject:

@@ -57,7 +57,12 @@ public class CustomizationManager : MonoBehaviour
         if (HasSelectedElement())
         {
             currSelectedElementMS.destinationVector = mouseSystem.GetSelectedCarPos();
-            //Debug.Log("CanPlaceElement: " + )
+
+            //Debug.Log("can place element: " + canPlaceElement);
+            //Debug.Log("CanPlaceCar: " + mouseSystem.CanPlaceCar(currSelectedElement.elementType));
+            //Debug.Log("SquareData value: " + squareData.value);
+            //Debug.Log("Mouse Click: " + Input.GetKeyDown(KeyCode.Mouse0));
+
             if (Input.GetKeyDown(KeyCode.Mouse0) && canPlaceElement && mouseSystem.CanPlaceCar(currSelectedElement.elementType)
                 && (squareData.value == MapSystem.SquareValue.EMPTY))
             {
@@ -103,7 +108,7 @@ public class CustomizationManager : MonoBehaviour
     {
         currSelectedElementMS.enableYMovement = currSelectedElementOriginalYEnabled;
         currSelectedElement.elementType = MapSystem.SquareValue.CAR;
-        map.SetSquareValue((int)mouseSystem.GetMousePos().x, (int)mouseSystem.GetMousePos().y, new SquareData(currSelectedElement.elementType, currSelectedElement));
+        map.SetSquareValue((int)mouseSystem.GetMousePos().x, (int)mouseSystem.GetMousePos().z, new SquareData(currSelectedElement.elementType, currSelectedElement));
         currSelectedElement.SetInitDir(mouseSystem.GetPlaceInitDir());
         currSelectedElement = null;
         currSelectedElementMS = null;
