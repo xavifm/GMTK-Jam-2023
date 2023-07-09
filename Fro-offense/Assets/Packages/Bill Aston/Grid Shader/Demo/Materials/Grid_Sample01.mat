@@ -141,7 +141,7 @@ Material:
     - _2nd_Line_Color: {r: 1, g: 1, b: 1, a: 0}
     - _2nd_Line_Offset: {r: 0, g: 0, b: 0, a: 0}
     - _2nd_Line_Tiling: {r: 2, g: 2, b: 0, a: 0}
-    - _BG_Color: {r: 0.17369089, g: 0.17369089, b: 0.17369089, a: 0}
+    - _BG_Color: {r: 0.06757223, g: 0.06757223, b: 0.06757223, a: 0}
     - _BG_Texture_Offset: {r: 0, g: 0, b: 0, a: 0}
     - _BG_Texture_Tiling: {r: 1, g: 1, b: 0, a: 0}
     - _BG_Texture_Tilling: {r: 1, g: 1, b: 0, a: 0}

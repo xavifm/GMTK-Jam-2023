@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayBtnScript : MonoBehaviour
 {
-    [SerializeField] GameObject vehiclesUI;
+    [SerializeField] GameObject vehiclesUI, retrybtn;
 
     public void Play()
     {
@@ -12,6 +12,7 @@ public class PlayBtnScript : MonoBehaviour
         AudioManager.Instance.Play_OST("Play_OST");
         AudioManager.Instance.Play_SFX("CarHorn_SFX");
         vehiclesUI.SetActive(false);
+        retrybtn.SetActive(true);
         gameObject.SetActive(false);
     }
 
