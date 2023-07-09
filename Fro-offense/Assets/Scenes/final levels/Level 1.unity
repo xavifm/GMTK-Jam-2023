@@ -749,8 +749,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Vehicles
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 2ecc44fb7b3dffa4f82a1292c6c9dc9b, type: 2}
-  m_sharedMaterial: {fileID: 2245267445727761223, guid: 2ecc44fb7b3dffa4f82a1292c6c9dc9b,
+  m_fontAsset: {fileID: 11400000, guid: 0844f663d2fc407449a825e752dd0a5a, type: 2}
+  m_sharedMaterial: {fileID: -464142198462230058, guid: 0844f663d2fc407449a825e752dd0a5a,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
