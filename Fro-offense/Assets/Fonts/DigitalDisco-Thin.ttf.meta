@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 89c6a5ffab8f20b4a946e721ed8253f9
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - DigitalDisco
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 48ee1c8630d127b4d8e7b65fd58a8547, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
