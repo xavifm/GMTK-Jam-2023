@@ -51,7 +51,7 @@ ParticleSystem:
   emitterVelocityMode: 0
   looping: 0
   prewarm: 0
-  playOnAwake: 0
+  playOnAwake: 1
   useUnscaledTime: 0
   autoRandomSeed: 1
   startDelay:
@@ -4775,7 +4775,7 @@ PrefabInstance:
     - target: {fileID: 3205516578383486467, guid: 17ed55091628d8d49889e61b77e7adf9,
         type: 3}
       propertyPath: playOnAwake
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3205516578383486467, guid: 17ed55091628d8d49889e61b77e7adf9,
         type: 3}

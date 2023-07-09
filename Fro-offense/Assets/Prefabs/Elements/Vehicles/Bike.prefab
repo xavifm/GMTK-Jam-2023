@@ -66,7 +66,9 @@ MonoBehaviour:
   model: {fileID: 7467431931986971012}
   elementUIId: 2
   elementType: 2
+  collidingWithCar: 0
   state: 0
+  deathParticles: {fileID: 0}
 --- !u!65 &2464636770386168678
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -154,6 +156,10 @@ PrefabInstance:
     - target: {fileID: 445260, guid: d7bf18dd20422304ea868e95c3518f19, type: 3}
       propertyPath: m_ConstrainProportionsScale
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19885000, guid: d7bf18dd20422304ea868e95c3518f19, type: 3}
+      propertyPath: moveWithTransform
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 19953682, guid: d7bf18dd20422304ea868e95c3518f19, type: 3}
       propertyPath: m_RenderAlignment
