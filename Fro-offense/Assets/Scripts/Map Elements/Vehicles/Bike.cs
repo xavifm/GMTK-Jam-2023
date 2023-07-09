@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Bike : Element
 {
-    const float TIMER_BASE = 2;
     int carxDIR = 1;
 
     const float POSY_THRESHOLD = 1;

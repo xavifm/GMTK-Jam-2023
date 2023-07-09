@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class Element : MonoBehaviour
 {
+    protected const float TIMER_BASE = 0.7f;
+
     [SerializeField] protected Transform model;
+    enum AnimState { IDLE = 0, MOVING = 1, NONE = 2 }
 
     Vector2 elementPos;
     public MapSystem.SquareValue elementType;
@@ -14,6 +17,14 @@ public class Element : MonoBehaviour
     internal ElementMoveSystem moveSystem;
     protected float moveTimer = 0;
     bool canMove = false;
+
+    Animator animalAnim;
+
+    const float RUN_DISTANCE_DETECTION = 0.2f;
+    const float SMOOTH_DAMP_SPEED = 0.1f;
+    float lerpSpeed = 0;
+
+    [SerializeField] float state = 0;
 
     protected new void Start()
     {
@@ -32,6 +43,8 @@ public class Element : MonoBehaviour
 
         CheckCanMove();
         if (canMove) MoveStateMachine();
+
+        AnimationStateMachine();
     }
 
     protected void SetMapSquareValue()
@@ -85,11 +98,40 @@ public class Element : MonoBehaviour
         }
     }
 
+    void AnimationStateMachine()
+    {
+        if(elementType.Equals(MapSystem.SquareValue.ANIMAL))
+        {
+            if (animalAnim == null)
+                animalAnim = model.GetComponent<Animator>();
+            
+            if(animalAnim != null)
+            {
+                Debug.Log(transform.name + " " + Vector3.Distance(transform.position, moveSystem.destinationVector));
+                if(Vector3.Distance(transform.position, moveSystem.destinationVector) > RUN_DISTANCE_DETECTION)
+                    SetAnimation(AnimState.MOVING);
+                else
+                    SetAnimation(AnimState.IDLE);
+            }
+        }
+    }
+
+    void SetAnimation(AnimState _animState, float _animSpeed = 1f)
+    {
+        if (_animState.Equals(AnimState.MOVING))
+            state = Mathf.SmoothDamp(state, 0.5f, ref lerpSpeed, SMOOTH_DAMP_SPEED);
+        else
+            state = Mathf.SmoothDamp(state, 0, ref lerpSpeed, SMOOTH_DAMP_SPEED);
+
+        animalAnim.speed = _animSpeed;
+        animalAnim.SetFloat("state", state);
+    }
 
     protected void RotateTo(Quaternion _targetRot, float _rotTime = 0.2f)
     {
         StartCoroutine(RotateTo_Cor(_targetRot, _rotTime));
     }
+
     private IEnumerator RotateTo_Cor(Quaternion _targetRot, float _lerpTime = 0.2f)
     {
         Quaternion initRot = model.rotation;
