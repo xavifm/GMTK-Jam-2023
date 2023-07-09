@@ -28,6 +28,8 @@ public class Element : MonoBehaviour
 
     [SerializeField] float state = 0;
 
+    [SerializeField] ParticleSystem deathParticles;
+
     protected new void Start()
     {
         originalYPos = transform.position.y;
@@ -79,6 +81,7 @@ public class Element : MonoBehaviour
             if(name.ToLower().Contains("frog")) AudioManager.Instance.Play_SFX("Frog_SFX");
             else if(name.ToLower().Contains("snake")) AudioManager.Instance.Play_SFX("Snake_SFX");
             else if(name.ToLower().Contains("chicken")) AudioManager.Instance.Play_SFX("Chicken_SFX");
+            Instantiate(deathParticles, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
     }
