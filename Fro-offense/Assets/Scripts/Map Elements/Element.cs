@@ -18,6 +18,7 @@ public class Element : MonoBehaviour
     internal ElementMoveSystem moveSystem;
     protected float moveTimer = 1f;
     bool canMove = false;
+    public bool collidingWithCar;
 
     Animator animalAnim;
 
@@ -60,7 +61,7 @@ public class Element : MonoBehaviour
         map.SetSquareValue((int) elementPos.x, (int) elementPos.y, new SquareData(elementType, this));
     }
 
-    protected void ResetMapSquareValue()
+    public void ResetMapSquareValue()
     {
         map.SetSquareValue((int)elementPos.x, (int)elementPos.y, new SquareData(MapSystem.SquareValue.EMPTY, null));
     }
@@ -75,6 +76,9 @@ public class Element : MonoBehaviour
         if(elementType == MapSystem.SquareValue.ANIMAL)
         {
             GameManager.Instance.KillRemainingAnimal();
+            if(name.ToLower().Contains("frog")) AudioManager.Instance.Play_SFX("Frog_SFX");
+            else if(name.ToLower().Contains("snake")) AudioManager.Instance.Play_SFX("Snake_SFX");
+            else if(name.ToLower().Contains("chicken")) AudioManager.Instance.Play_SFX("Chicken_SFX");
             Destroy(gameObject);
         }
     }
@@ -103,6 +107,18 @@ public class Element : MonoBehaviour
             Element otherElement = other.GetComponent<Element>();
             if (otherElement != null && otherElement.elementType == MapSystem.SquareValue.ANIMAL)
                 otherElement.KillAnimal();
+            if (other.CompareTag("Vehicle"))
+                collidingWithCar = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (elementType == MapSystem.SquareValue.CAR)
+        {
+            Element otherElement = other.GetComponent<Element>();
+            if (other.CompareTag("Vehicle"))
+                collidingWithCar = false;
         }
     }
 
