@@ -75,6 +75,7 @@ public class Element : MonoBehaviour
         if(elementType == MapSystem.SquareValue.ANIMAL)
         {
             GameManager.Instance.KillRemainingAnimal();
+            GetComponentInChildren<ParticleSystem>().Play();
             Destroy(gameObject);
         }
     }
