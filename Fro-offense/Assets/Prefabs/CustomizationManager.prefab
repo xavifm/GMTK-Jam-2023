@@ -48,16 +48,16 @@ MonoBehaviour:
   customVehiclesData:
   - name: Car
     amount: 2
-    img: {fileID: 21300000, guid: 13e7e6fe43a8aa049bcd610bbc1f5ff8, type: 3}
+    img: {fileID: 21300000, guid: efcc4076eb34ebc46bc604dc3aac1a96, type: 3}
     prefab: {fileID: 2367754469834951035, guid: 2c7cca0799bed054f9722a281f299a4d,
       type: 3}
   - name: Sport
     amount: 2
-    img: {fileID: 21300000, guid: 5955491dc8dcecb4a993d9a008cf65a7, type: 3}
+    img: {fileID: 21300000, guid: 5ceb226a98bbf664db36c73d0d1adaac, type: 3}
     prefab: {fileID: 4965314011542952292, guid: 173ef57d637e31445a71ad9cd9c9f73e,
       type: 3}
   - name: Bike
     amount: 2
-    img: {fileID: 21300000, guid: 3a0c527d7f890d64a9b56b086e6e766a, type: 3}
+    img: {fileID: 21300000, guid: 49b7c6abf4c1a8f44814243f59b104c0, type: 3}
     prefab: {fileID: 5315241512695882899, guid: 32cd15918855fcf48887401ab5acb386,
       type: 3}
