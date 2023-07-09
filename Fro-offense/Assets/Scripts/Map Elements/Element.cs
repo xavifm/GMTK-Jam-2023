@@ -7,6 +7,7 @@ public class Element : MonoBehaviour
     protected const float TIMER_BASE = 0.7f;
 
     [SerializeField] protected Transform model;
+    public int elementUIId;
     enum AnimState { IDLE = 0, MOVING = 1, NONE = 2 }
 
     Vector2 elementPos;
@@ -15,7 +16,7 @@ public class Element : MonoBehaviour
     protected float originalYPos;
 
     internal ElementMoveSystem moveSystem;
-    protected float moveTimer = 0;
+    protected float moveTimer = 1f;
     bool canMove = false;
 
     Animator animalAnim;
@@ -37,9 +38,16 @@ public class Element : MonoBehaviour
 
     protected new void Update()
     {
-        ResetMapSquareValue();
-        elementPos = new Vector2(Mathf.Round(transform.position.x), Mathf.Round(transform.position.z));
-        SetMapSquareValue();
+        if (GameManager.Instance.GameStateEquals(GameState.PLAY))
+        {
+            ResetMapSquareValue();
+            elementPos = new Vector2(Mathf.Round(transform.position.x), Mathf.Round(transform.position.z));
+            SetMapSquareValue();
+        }
+        else
+        {
+            elementPos = new Vector2(Mathf.Round(transform.position.x), Mathf.Round(transform.position.z));
+        }
 
         CheckCanMove();
         if (canMove) MoveStateMachine();
@@ -49,12 +57,12 @@ public class Element : MonoBehaviour
 
     protected void SetMapSquareValue()
     {
-        map.SetSquareValue((int) elementPos.x, (int) elementPos.y, elementType);
+        map.SetSquareValue((int) elementPos.x, (int) elementPos.y, new SquareData(elementType, this));
     }
 
     protected void ResetMapSquareValue()
     {
-        map.SetSquareValue((int)elementPos.x, (int)elementPos.y, MapSystem.SquareValue.EMPTY);
+        map.SetSquareValue((int)elementPos.x, (int)elementPos.y, new SquareData(MapSystem.SquareValue.EMPTY, null));
     }
 
     protected virtual void MoveStateMachine()
@@ -144,5 +152,28 @@ public class Element : MonoBehaviour
             model.rotation = Quaternion.Lerp(initRot, _targetRot, timer / _lerpTime);
         }
     }
+
+    public virtual void SetInitDir(Vector2Int _initDir)
+    {
+        if(_initDir.x != 0) model.rotation = Quaternion.Euler(0, 90 * _initDir.x, 0);
+    }
+
+
+    //private void OnMouseDown()
+    //{
+    //    if (elementType == MapSystem.SquareValue.CAR && GameManager.Instance.GameStateEquals(GameState.CUSTOMIZE))
+    //    {
+    //        MouseSystem mouseSystem = FindObjectOfType<MouseSystem>();
+    //        if (map.GetSquareData((int)mouseSystem.GetMousePos().x, (int)mouseSystem.GetMousePos().z) != MapSystem.SquareValue.EMPTY) return;
+
+    //        if (CustomizationManager.Instance.HasSelectedElement())
+    //        {
+    //            return;
+    //            //CustomizationManager.Instance.RemoveElementSelection();
+    //        }
+    //        CustomizationManager.Instance.SetSelectedElement(elementUIId);
+    //        Destroy(gameObject);
+    //    }
+    //}
 
 }

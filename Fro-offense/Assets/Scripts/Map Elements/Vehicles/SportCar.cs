@@ -107,6 +107,12 @@ public class SportCar : Element
 
     MapSystem.SquareValue GetNextSquare(int x, int y)
     {
-        return map.GetSquareValue(x, y);
+        return map.GetSquareData(x, y).value;
+    }
+
+    public override void SetInitDir(Vector2Int _initDir)
+    {
+        base.SetInitDir(_initDir);
+        carxDIR = _initDir.x;
     }
 }
