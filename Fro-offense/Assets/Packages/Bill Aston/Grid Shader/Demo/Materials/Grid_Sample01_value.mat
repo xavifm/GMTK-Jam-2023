@@ -18,8 +18,7 @@ Material:
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
-  stringTagMap:
-    RenderType: Opaque
+  stringTagMap: {}
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
@@ -129,7 +128,7 @@ Material:
     - _2nd_Line_Color: {r: 1, g: 0, b: 0, a: 0}
     - _2nd_Line_Offset: {r: 0, g: 0, b: 0, a: 0}
     - _2nd_Line_Tiling: {r: 2, g: 2, b: 0, a: 0}
-    - _BG_Color: {r: 0.17469178, g: 0.17469178, b: 0.17469178, a: 0}
+    - _BG_Color: {r: 0.17950998, g: 0.17950998, b: 0.17950998, a: 0}
     - _BG_Texture_Offset: {r: 0, g: 0, b: 0, a: 0}
     - _BG_Texture_Tiling: {r: 1, g: 1, b: 0, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
