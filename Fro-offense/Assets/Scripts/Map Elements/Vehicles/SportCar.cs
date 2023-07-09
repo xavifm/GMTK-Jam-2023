@@ -9,7 +9,6 @@ public class SportCar : Element
 
     int carVerticalDir = 0;
 
-    const float TIMER_BASE = 2;
     const int MAX_HORIZONTAL_TURNS = 2;
 
     private void Start()

@@ -13,7 +13,7 @@ public class ElementMoveSystem : MonoBehaviour
         if(!enableYMovement)
             destinationVector = new Vector3(Mathf.Round(destinationVector.x), transform.position.y, Mathf.Round(destinationVector.z));
         else
-            destinationVector = new Vector3(Mathf.Round(destinationVector.x), Mathf.Round(destinationVector.y), Mathf.Round(destinationVector.z));
+            destinationVector = new Vector3(Mathf.Round(destinationVector.x), destinationVector.y, Mathf.Round(destinationVector.z));
 
         transform.position = Vector3.Lerp(transform.position, destinationVector, Time.deltaTime * elementSpeed);
     }

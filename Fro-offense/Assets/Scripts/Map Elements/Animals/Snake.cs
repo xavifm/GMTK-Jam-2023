@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Snake : Element
 {
-    const float TIMER_BASE = 2;
-
     [SerializeField] bool dodging = false;
     int dodgeDir = 0;
     int snakeXDIR = 0;

@@ -6,8 +6,6 @@ public class Car : Element
 {
     int carxDIR = 1;
 
-    const float TIMER_BASE = 2;
-
     private void Start()
     {
         base.Start();
