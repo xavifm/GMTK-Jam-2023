@@ -53,26 +53,21 @@ public class CustomizationManager : MonoBehaviour
     {
         if (!GameManager.Instance.GameStateEquals(GameState.CUSTOMIZE)) return;
 
-        SquareData squareData = map.GetSquareData((int)mouseSystem.GetMousePos().x, (int)mouseSystem.GetMousePos().y);
+        SquareData squareData = map.GetSquareData((int)mouseSystem.GetMousePos().x, (int)mouseSystem.GetMousePos().z);
         if (HasSelectedElement())
         {
             currSelectedElementMS.destinationVector = mouseSystem.GetSelectedCarPos();
-            //Debug.Log("CanPlaceElement: " + mouseSystem.CanPlaceCar(currSelectedElement.elementType));
-            //Debug.Log("SquareValue: " + squareData.value.ToString());
-            //Debug.Log("MouseDown: " + Input.GetKeyDown(KeyCode.Mouse0));
-            Debug.Log("Has element ref: " + squareData.elementRef != null);
             if (squareData.elementRef != null) Debug.Log("Element ref: " + squareData.elementRef.elementType.ToString());
             if (Input.GetKeyDown(KeyCode.Mouse0) && canPlaceElement && mouseSystem.CanPlaceCar(currSelectedElement.elementType)
-                && (squareData.value == MapSystem.SquareValue.EMPTY || squareData.value == MapSystem.SquareValue.CAR)
-                && !currSelectedElement.collidingWithCar)
+                && (squareData.value == MapSystem.SquareValue.EMPTY || squareData.value == MapSystem.SquareValue.CAR))
             {
-                //Element prevElementRef = squareData.elementRef;
+                Element prevElementRef = squareData.elementRef;
                 PlaceSelectedElement();
-                //if (prevElementRef != null && prevElementRef.elementType == MapSystem.SquareValue.CAR)
-                //{
-                //    SetSelectedElement(prevElementRef.elementUIId);
-                //    Destroy(prevElementRef.gameObject);
-                //}
+                if (prevElementRef != null && prevElementRef.elementType == MapSystem.SquareValue.CAR)
+                {
+                    SetSelectedElement(prevElementRef.elementUIId);
+                    Destroy(prevElementRef.gameObject);
+                }
                 AudioManager.Instance.Play_SFX("UIClick_SFX");
             }
             else if (Input.GetKeyDown(KeyCode.Mouse1))
@@ -110,7 +105,7 @@ public class CustomizationManager : MonoBehaviour
     {
         currSelectedElementMS.enableYMovement = currSelectedElementOriginalYEnabled;
         currSelectedElement.elementType = MapSystem.SquareValue.CAR;
-        map.SetSquareValue((int)mouseSystem.GetMousePos().x, (int)mouseSystem.GetMousePos().y, new SquareData(currSelectedElement.elementType, currSelectedElement));
+        map.SetSquareValue((int)mouseSystem.GetMousePos().x, (int)mouseSystem.GetMousePos().z, new SquareData(currSelectedElement.elementType, currSelectedElement));
         currSelectedElement.SetInitDir(mouseSystem.GetPlaceInitDir());
         currSelectedElement = null;
         currSelectedElementMS = null;
